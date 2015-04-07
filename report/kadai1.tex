@@ -1,0 +1,56 @@
+\documentclass[titlepage]{jsarticle}
+%画像を貼る
+\usepackage[dvipdfm]{graphicx}
+%画像を固定させるもの
+\usepackage{here}
+\usepackage{multicol}
+%コメント用
+\usepackage{comment}
+
+%txtファイルを改行とかして表示してくれる
+\usepackage{moreverb}
+
+\usepackage{ascmac,here,txfonts,txfonts}
+\usepackage{color}
+
+%ソースコードの表示
+\usepackage{listings,jlisting}
+\renewcommand{\lstlistingname}{リスト}
+\lstset{
+  breaklines = true,
+  language=Java,
+  basicstyle=\ttfamily\scriptsize,
+  commentstyle={\itshape \color[cmyk]{1,0.4,1,0}},
+  classoffset=1,
+  keywordstyle={\bfseries \color[cmyk]{0,1,0,0}},
+%  stringstyle={\ttfamily \color[rgb]{0,0,1}},
+  frame=tRBl,
+  framesep=5pt,
+  showstringspaces=false,
+  numbers=left,
+  stepnumber=1,
+  numberstyle=\tiny,
+  tabsize=2,
+}
+
+\title{\LARGE {数値計算法 課題1(誤差)}}
+\author{\large {ME1507 芝田 将}}
+
+
+\begin{document}
+
+\maketitle
+
+\section{2次方程式$ax^{2}+bx+c=0$の会について(桁落ち，情報落ち)}
+
+\begin{enumerate}
+\item \textbf{公式をそのまま使って解を計算すると、桁落ち・情報落ちが発生することがある。桁落ち・情報落ちを回避する方法と、回避できる理由を述べよ。}
+
+
+
+\lstinputlisting[caption=課題1プログラム,label=kadai1-source]
+{../src/kadai1.c}
+
+
+\end{enumerate}
+\end{document}
