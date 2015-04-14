@@ -12,17 +12,16 @@ void quadratic_formula(double a, double b, double c){
         printf("2次方程式の解: x = %f, %fです\n",ans1 ,ans2);
     }else if (discriminant == 0){
         ans1 = -b / ( 2 * a );
-        ans2 = ans1;
-        printf("2次方程式の解: x = %f, %fです\n",ans1 ,ans2);
+        printf("2次方程式の解: x = %f (2重解)です\n",ans1);
     }else{
         double real = -b / (2*a);
         double imag = sqrt(-discriminant) / (2*a);
-        printf("2次方程式の解: %.2f+%.2fi, %.2f-%.2fi\n", real, imag, real, imag);
+        printf("2次方程式の解: x = %.2f+%.2fi, %.2f-%.2fです\n", real, imag, real, imag);
     }
 
 }
 
-int main(void){
+void kadai1_1(void){
     double a, b, c;
 
     printf("係数を入力して下さい。\n");
@@ -35,5 +34,9 @@ int main(void){
 
     // 解の公式
     quadratic_formula(a, b, c);
+}
+
+int main(void){
+    kadai1_1();
     return 0;
 }
