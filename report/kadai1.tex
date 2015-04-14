@@ -46,6 +46,28 @@
 \begin{enumerate}
 \item \textbf{公式をそのまま使って解を計算すると、桁落ち・情報落ちが発生することがある。桁落ち・情報落ちを回避する方法と、回避できる理由を述べよ。}
 
+$b^{2} >> |4ac|$の場合、分子の$-b + \sqrt{b^{2}-4ac}$の計算で、桁落ちが起きる可能性がある。さらに$ac<0$の場合，根号内部の$b^{2}-4ac$の計算において情報落ちが発生する場合がある。分子の有理化を行うことでこれらを回避することができる。
+
+
+
+\item \textbf{次の入出力を持つプログラムを作成するためのアルゴリズムもしくはフローチャートを作成せよ。}
+
+\begin{itemize}
+\item 解の公式をそのまま使って計算した例
+\begin{enumerate}
+\item 判別式D (=$b^{2}-4ac$)を計算し、正負を判断する。
+\item 正なら解の公式の計算結果をそのまま表示。
+\item 負なら実数部と虚部を計算し表示。
+\end{enumerate}
+
+\item 桁落ち・情報落ちを回避する方法で計算した例
+\begin{enumerate}
+\item 
+\end{enumerate}
+
+\end{itemize}
+
+
 
 
 \lstinputlisting[caption=課題1プログラム,label=kadai1-source]
