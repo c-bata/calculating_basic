@@ -3,7 +3,7 @@
 ## 実行方法
 
 ```
-$ gcc kadai1.c
+$ gcc -lm kadai1.c
 $ ./a.out
 ```
 
