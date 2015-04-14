@@ -47,6 +47,16 @@
 \item \textbf{公式をそのまま使って解を計算すると、桁落ち・情報落ちが発生することがある。桁落ち・情報落ちを回避する方法と、回避できる理由を述べよ。}
 
 $b^{2} >> |4ac|$の場合、分子の$-b + \sqrt{b^{2}-4ac}$の計算で、桁落ちが起きる可能性がある。さらに$ac<0$の場合，根号内部の$b^{2}-4ac$の計算において情報落ちが発生する場合がある。分子の有理化を行うことでこれらを回避することができる。
+\begin{eqnarray}
+x_{1} = \frac{-b + \sqrt{b^{2}-4ac}}{2a} \\
+x_{2} = \frac{-b + \sqrt{b^{2}-4ac}}{2a}
+\end{eqnarray}
+
+これらを有理化すると次式のようになる。
+\begin{eqnarray}
+x_{1} = \frac{-2c}{b+\sqrt{b^{2}-4ac}} \\
+x_{2} = \frac{2c}{-b+\sqrt{b^{2}-4ac}}
+\end{eqnarray}
 
 
 
@@ -62,16 +72,43 @@ $b^{2} >> |4ac|$の場合、分子の$-b + \sqrt{b^{2}-4ac}$の計算で、桁�
 
 \item 桁落ち・情報落ちを回避する方法で計算した例
 \begin{enumerate}
-\item 
+\item 解の公式を以下のように変形して計算
+\begin{eqnarray}
+x_{1} = \frac{-2c}{b+\sqrt{b^{2}-4ac}} \\
+x_{2} = \frac{2c}{-b+\sqrt{b^{2}-4ac}}
+\end{eqnarray}
+
 \end{enumerate}
 
 \end{itemize}
 
 
-
+\item \textbf{プログラムを作成せよ}
 
 \lstinputlisting[caption=課題1プログラム,label=kadai1-source]
 {../src/kadai1.c}
+
+
+\item \textbf{結果を考察せよ}
+
+実行結果をリスト\ref{kadai1-result}に示す。
+有理化を行うことでより正確な値となっていることが確認できる。
+
+\begin{lstlisting}[caption=実行結果,label=kadai1-result]
+$ ./a.out
+$ ./a.out
+係数を入力して下さい。
+a > 0.01
+b > 100
+c > 0.01
+
+そのまま計算した場合
+2次方程式の解: x = -0.000100, -9999.999900です
+
+桁落ち・情報落ちを回避する方法で計算した解
+2次方程式の解: x = -0.000100, -9999.999883です
+\end{lstlisting}
+
 
 
 \end{enumerate}
