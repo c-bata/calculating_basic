@@ -39,7 +39,7 @@ void new_quadratic_formula(double a, double b, double c){
     }
 }
 
-void kadai1(void){
+int main(void){
     double a, b, c;
 
     printf("係数を入力して下さい。\n");
@@ -55,10 +55,5 @@ void kadai1(void){
     quadratic_formula(a, b, c);
     printf("\n桁落ち・情報落ちを回避する方法で計算した解\n");
     new_quadratic_formula(a, b, c);
-}
-
-
-int main(void){
-    kadai1();
     return 0;
 }
