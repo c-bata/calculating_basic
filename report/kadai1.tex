@@ -120,11 +120,21 @@ c > 0.01
 \end{itemize}
 \end{itemize}
 
-作成したプログラムを以下に示す。
+作成したプログラムをリスト\ref{kadai2-source}に示す。
 
-
+\lstinputlisting[caption=課題2プログラム,label=kadai2-source]
+{../src/kadai2.c}
 
 \subsection{$n$を変えてプログラムを実行し、誤差の視点から結果を考察せよ}
+
+\begin{lstlisting}[caption=実行結果,label=kadai2-result]
+$ ./a.out
+nを入力して下さい。
+n > 100000000
+1/1から1/n: -18.420681
+1/nから1/1: -18.420681
+\end{lstlisting}
+
 
 
 \end{document}
