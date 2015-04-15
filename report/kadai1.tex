@@ -1,4 +1,4 @@
-\documentclass[titlepage]{jsarticle}
+\documentclass[]{jsarticle}
 %画像を貼る
 \usepackage[dvipdfm]{graphicx}
 %画像を固定させるもの
@@ -41,10 +41,9 @@
 
 \maketitle
 
-\section{2次方程式$ax^{2}+bx+c=0$の会について(桁落ち，情報落ち)}
+\section{2次方程式$ax^{2}+bx+c=0$の解について(桁落ち，情報落ち)}
 
-\begin{enumerate}
-\item \textbf{公式をそのまま使って解を計算すると、桁落ち・情報落ちが発生することがある。桁落ち・情報落ちを回避する方法と、回避できる理由を述べよ。}
+\subsection{公式をそのまま使って解を計算すると、桁落ち・情報落ちが発生することがある。桁落ち・情報落ちを回避する方法と、回避できる理由を述べよ。}
 
 $b^{2} >> |4ac|$の場合、分子の$-b + \sqrt{b^{2}-4ac}$の計算で、桁落ちが起きる可能性がある。さらに$ac<0$の場合，根号内部の$b^{2}-4ac$の計算において情報落ちが発生する場合がある。分子の有理化を行うことでこれらを回避することができる。
 \begin{eqnarray}
@@ -59,8 +58,7 @@ x_{2} = \frac{2c}{-b+\sqrt{b^{2}-4ac}}
 \end{eqnarray}
 
 
-
-\item \textbf{次の入出力を持つプログラムを作成するためのアルゴリズムもしくはフローチャートを作成せよ。}
+\subsection{次の入出力を持つプログラムを作成するためのアルゴリズムもしくはフローチャートを作成せよ。}
 
 \begin{itemize}
 \item 解の公式をそのまま使って計算した例
@@ -83,13 +81,13 @@ x_{2} = \frac{2c}{-b+\sqrt{b^{2}-4ac}}
 \end{itemize}
 
 
-\item \textbf{プログラムを作成せよ}
+\subsection{プログラムを作成せよ}
 
 \lstinputlisting[caption=課題1プログラム,label=kadai1-source]
 {../src/kadai1.c}
 
 
-\item \textbf{結果を考察せよ}
+\subsection{結果を考察せよ}
 
 実行結果をリスト\ref{kadai1-result}に示す。
 有理化を行うことでより正確な値となっていることが確認できる。
@@ -109,7 +107,24 @@ c > 0.01
 2次方程式の解: x = -0.000100, -9999.999883です
 \end{lstlisting}
 
+\section{オイラー定数$\gamma:=\lim_{n \to \infty} \left(\sum_{i=1}^{n} \frac{1}{i} - \log_{e} n\right)=0.5772156...$の近似値について(誤差の累積)}
+
+\subsection{次の入出力を持つプログラムを作成せよ}
+
+\begin{itemize}
+\item 入力: $n$
+\item 出力:
+\begin{itemize}
+\item $\frac{1}{1}$から順に$\frac{1}{n}$まで加えた後、$log_{e} n$の値を引いて得られた近似値
+\item $\frac{1}{n}$から順に$\frac{1}{1}$まで加えた後、$log_{e} n$の値を引いて得られた近似値
+\end{itemize}
+\end{itemize}
+
+作成したプログラムを以下に示す。
 
 
-\end{enumerate}
+
+\subsection{$n$を変えてプログラムを実行し、誤差の視点から結果を考察せよ}
+
+
 \end{document}
