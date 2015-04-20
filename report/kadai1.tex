@@ -1,19 +1,11 @@
 \documentclass[]{jsarticle}
-%画像を貼る
 \usepackage[dvipdfm]{graphicx}
-%画像を固定させるもの
 \usepackage{here}
 \usepackage{multicol}
-%コメント用
 \usepackage{comment}
-
-%txtファイルを改行とかして表示してくれる
 \usepackage{moreverb}
-
 \usepackage{ascmac,here,txfonts,txfonts}
 \usepackage{color}
-
-%ソースコードの表示
 \usepackage{listings,jlisting}
 \renewcommand{\lstlistingname}{リスト}
 \lstset{
@@ -23,7 +15,6 @@
   commentstyle={\itshape \color[cmyk]{1,0.4,1,0}},
   classoffset=1,
   keywordstyle={\bfseries \color[cmyk]{0,1,0,0}},
-%  stringstyle={\ttfamily \color[rgb]{0,0,1}},
   frame=tRBl,
   framesep=5pt,
   showstringspaces=false,
@@ -35,7 +26,6 @@
 
 \title{\LARGE {数値計算法 課題1(誤差)}}
 \author{\large {ME1507 芝田 将}}
-
 
 \begin{document}
 
@@ -83,6 +73,8 @@ x_{2} = \frac{2c}{-b+\sqrt{b^{2}-4ac}}
 
 \subsection{プログラムを作成せよ}
 
+プログラムをリスト\ref{kadai1-source}に示す。
+
 \lstinputlisting[caption=課題1プログラム,label=kadai1-source]
 {../src/kadai1-1.c}
 
@@ -93,7 +85,6 @@ x_{2} = \frac{2c}{-b+\sqrt{b^{2}-4ac}}
 有理化を行うことでより正確な値となっていることが確認できる。
 
 \begin{lstlisting}[caption=実行結果,label=kadai1-result]
-$ ./a.out
 $ ./a.out
 係数を入力して下さい。
 a > 0.01
@@ -107,6 +98,9 @@ c > 0.01
 2次方程式の解: x = -0.000100, -9999.999883です
 \end{lstlisting}
 
+分子の有理化を行なった式を適用し計算することで、情報落ちを回避できたと考えられる。
+
+
 \section{オイラー定数$\gamma:=\lim_{n \to \infty} \left(\sum_{i=1}^{n} \frac{1}{i} - \log_{e} n\right)=0.5772156...$の近似値について(誤差の累積)}
 
 \subsection{次の入出力を持つプログラムを作成せよ}
@@ -115,8 +109,8 @@ c > 0.01
 \item 入力: $n$
 \item 出力:
 \begin{itemize}
-\item $\frac{1}{1}$から順に$\frac{1}{n}$まで加えた後、$log_{e} n$の値を引いて得られた近似値
-\item $\frac{1}{n}$から順に$\frac{1}{1}$まで加えた後、$log_{e} n$の値を引いて得られた近似値
+\item $\frac{1}{1}$から順に$\frac{1}{n}$まで加えた後、$\log_{e} n$の値を引いて得られた近似値
+\item $\frac{1}{n}$から順に$\frac{1}{1}$まで加えた後、$\log_{e} n$の値を引いて得られた近似値
 \end{itemize}
 \end{itemize}
 
@@ -127,14 +121,30 @@ c > 0.01
 
 \subsection{$n$を変えてプログラムを実行し、誤差の視点から結果を考察せよ}
 
+$n$を100, 10000, 1000000と変化させた際の実行結果をリスト\ref{kadai2-result}に示す。
+
 \begin{lstlisting}[caption=実行結果,label=kadai2-result]
 $ ./a.out
 nを入力して下さい。
-n > 100000000
-1/1から1/n: -18.420681
-1/nから1/1: -18.420681
+n > 100
+1/1から1/n: 0.582207
+1/nから1/1: 0.582207
+
+$ ./a.out
+nを入力して下さい。
+n > 10000
+1/1から1/n: 0.577266
+1/nから1/1: 0.577266
+
+$ ./a.out
+nを入力して下さい。
+n > 1000000
+1/1から1/n: 0.577216
+1/nから1/1: 0.577216
 \end{lstlisting}
 
+$n$を大きくすれば、オイラー定数の真値$0.5772156$に近づいていることが確認できる。
+但し、$n$を$\frac{1}{1}$から順に$\frac{1}{n}$まで加えた後、$\log_{e}n$の値を引いた近似値と$n$を$\frac{1}{n}$から順に$\frac{1}{1}$まで加えた後、$\log_{e}n$の値を引いた近似値に違いは見られなかった。
 
 
 \end{document}
