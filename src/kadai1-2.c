@@ -5,8 +5,8 @@
 double increment(double n){
     int i;
     double sum = 0;
-    for (i=0; i<n; i++){
-        sum = 1/(i+1);
+    for (i=0; i<(int)n; i++){
+        sum += 1/((double)i+1);
     }
     return sum - log(n);
 }
@@ -14,8 +14,8 @@ double increment(double n){
 double decrement(double n){
     int i;
     double sum = 0;
-    for (i=n; i<0; i--){
-        sum = 1/i;
+    for (i=(int)n; i>0; i--){
+        sum += 1/(double)i;
     }
     return sum - log(n);
 }
