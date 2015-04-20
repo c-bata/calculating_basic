@@ -20,8 +20,6 @@ double decrement(double n){
     return sum - log(n);
 }
 
-
-
 int main(void){
     double n;
 
