@@ -8,7 +8,6 @@ double func(double y){
 }
 
 double euler(double n, double h, double t_init, double y_init){
-    /* h: 幅, y0: 初期値 */
     int i;
     double y0, y1 = y_init, t0, t1 = t_init;
 
@@ -25,6 +24,25 @@ double euler(double n, double h, double t_init, double y_init){
     return y1;
 }
 
+double huen(double n, double h, double t_init, double y_init){
+    /* h: 幅, y0: 初期値 */
+    int i;
+    double s;
+    double y0, y1 = y_init, t0, t1 = t_init;
+
+    for(i=0; i<n; i++){
+        t0 = t1;
+        y0 = y1;
+        t1 = t0 + h;
+        s = y0 + h * func(y0);
+        y1 = y0 + (h/2) * (func(y0) + func(s));
+
+        printf("%d, %f, %f,\n",i ,t0 ,y0);
+    }
+    printf("%d, %f, %f,\n",i ,t1 ,y1);
+
+    return y1;
+}
 
 int main(void){
     double h; // 幅
@@ -36,5 +54,5 @@ int main(void){
     double y_init = 0.1; // 初期値
 
     printf("オイラー法による解: %f", euler(n, h, t_start, y_init));
-
+    printf("ホイン法による解: %f", huen(n, h, t_start, y_init));
 }
