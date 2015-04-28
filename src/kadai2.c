@@ -65,6 +65,23 @@ double runge_kutta(double n, double h, double t_init, double y_init){
     return y1;
 }
 
+double adams(double n, double h, double t_init, double y_init){
+    int i;
+    double s1, s2, s3, s4;
+    double y0, y1 = 0, y2 = y_init, t0, t1 = t_init;
+
+    for(i=0; i<n; i++){
+        y0 = y1;
+        y1 = y2;
+        y2 = y1 + h / 2 * (3 * func(y1) - func(y0) );
+        printf("%d, %f, %f,\n",i ,t0 ,y0);
+    }
+    printf("%d, %f, %f,\n",i ,t1 ,y1);
+    printf("%d, %f, %f,\n",i ,t1 ,y2);
+
+    return y2;
+}
+
 
 int main(void){
     double h; // 幅
@@ -78,4 +95,5 @@ int main(void){
     printf("オイラー法による解: %f\n", euler(n, h, t_start, y_init));
     printf("ホイン法による解: %f\n", huen(n, h, t_start, y_init));
     printf("ルンゲクッタ法による解: %f\n", runge_kutta(n, h, t_start, y_init));
+    printf("アダムスバッシュフォース法による解: %f\n", adams(n, h, t_start, y_init));
 }
