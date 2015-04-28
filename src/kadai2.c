@@ -16,11 +16,7 @@ double euler(double n, double h, double t_init, double y_init){
         y0 = y1;
         t1 = t0 + h;
         y1 = y0 + h * func(y0);
-
-        printf("%d, %f, %f,\n",i ,t0 ,y0);
     }
-    printf("%d, %f, %f,\n",i ,t1 ,y1);
-
     return y1;
 }
 
@@ -35,11 +31,7 @@ double huen(double n, double h, double t_init, double y_init){
         t1 = t0 + h;
         s = y0 + h * func(y0);
         y1 = y0 + (h/2) * (func(y0) + func(s));
-
-        printf("%d, %f, %f,\n",i ,t0 ,y0);
     }
-    printf("%d, %f, %f,\n",i ,t1 ,y1);
-
     return y1;
 }
 
@@ -57,28 +49,25 @@ double runge_kutta(double n, double h, double t_init, double y_init){
         s3 = h * func(y0 + 0.5*s2);
         s4 = h * func(y0 + s3);
         y1 = y0 + (s1 + 2*s2 + 2*s3 + s4)/6;
-
-        printf("%d, %f, %f,\n",i ,t0 ,y0);
     }
-    printf("%d, %f, %f,\n",i ,t1 ,y1);
-
     return y1;
 }
 
 double adams(double n, double h, double t_init, double y_init){
     int i;
     double s1, s2, s3, s4;
-    double y0, y1 = 0, y2 = y_init, t0, t1 = t_init;
+    double y0, y1, y2, t0, t1 = t_init;
 
-    for(i=0; i<n; i++){
+    y1 = y_init;
+    y2 = y_init + h * func(y_init);  // 初期値は1つeuler methodで求める
+
+    for(i=1; i<n; i++){
+        t0 = t1;
         y0 = y1;
         y1 = y2;
+        t1 = t0 + h;
         y2 = y1 + h / 2 * (3 * func(y1) - func(y0) );
-        printf("%d, %f, %f,\n",i ,t0 ,y0);
     }
-    printf("%d, %f, %f,\n",i ,t1 ,y1);
-    printf("%d, %f, %f,\n",i ,t1 ,y2);
-
     return y2;
 }
 
