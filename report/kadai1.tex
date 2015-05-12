@@ -43,18 +43,12 @@ x_{1} &=& \frac{c}{ax_{2}} \\
 x_{2} &=& \frac{-b - \sqrt{b^{2}-4ac}}{2a}
 \end{eqnarray}
 
+また$b<0$の場合、分子の$-b - \sqrt{b^{2}-4ac}$の計算で、桁落ちが起きる可能性がある。
+そこで$x_{1}$の計算では$x2$を用いることで以下のように書き換えると桁落ちを回避することが出来る。
 
-
-さらに$b^{2} >> |4ac|$の場合、根号内部の$b^{2}-4ac$の計算において情報落ちが発生する場合がある。分子の有理化を行うことでこれらを回避することができる。
 \begin{eqnarray}
-x_{1} = \frac{-b + \sqrt{b^{2}-4ac}}{2a} \\
-x_{2} = \frac{-b + \sqrt{b^{2}-4ac}}{2a}
-\end{eqnarray}
-
-これらを有理化すると次式のようになる。
-\begin{eqnarray}
-x_{1} = \frac{-2c}{b+\sqrt{b^{2}-4ac}} \\
-x_{2} = \frac{2c}{-b+\sqrt{b^{2}-4ac}}
+x_{1} &=& \frac{-b + \sqrt{b^{2}-4ac}}{2a} \\
+x_{2} &=& \frac{c}{ax_{1}}
 \end{eqnarray}
 
 
@@ -71,10 +65,18 @@ x_{2} = \frac{2c}{-b+\sqrt{b^{2}-4ac}}
 \item 桁落ち・情報落ちを回避する方法で計算した例
 \begin{enumerate}
 \item 解の公式を以下のように変形して計算
+\begin{itemize}
+\item $b>0$の場合
 \begin{eqnarray}
-x_{1} = \frac{-2c}{b+\sqrt{b^{2}-4ac}} \\
-x_{2} = \frac{2c}{-b+\sqrt{b^{2}-4ac}}
+x_{1} &=& \frac{c}{ax_{2}} \\
+x_{2} &=& \frac{-b - \sqrt{b^{2}-4ac}}{2a}
 \end{eqnarray}
+\item $b<0$の場合
+\begin{eqnarray}
+x_{1} &=& \frac{-b + \sqrt{b^{2}-4ac}}{2a} \\
+x_{2} &=& \frac{c}{ax_{1}}
+\end{eqnarray}
+\end{itemize}
 
 \end{enumerate}
 
@@ -101,10 +103,10 @@ b > 100
 c > 0.01
 
 そのまま計算した場合
-2次方程式の解: x = -0.000100, -9999.999900です
+2次方程式の解: x = 0.000000, -10000.000000です
 
 桁落ち・情報落ちを回避する方法で計算した解
-2次方程式の解: x = -0.000100, -9999.999883です
+2次方程式の解: x = -0.000100, -10000.000000です
 \end{lstlisting}
 
 異なる2つの実数解を得るために$a=0.01, b=100, c=0.01$を入力値として与えた。
