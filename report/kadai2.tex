@@ -104,7 +104,6 @@ h > 0.01
 
 \section{2次アダムス・バッシュフォース法を導け}
 
-
 \begin{eqnarray*}
 \frac{dy}{dt} = f(t,y)\\
 y(t_{0}) = y_{0}
@@ -114,27 +113,40 @@ y(t_{0}) = y_{0}
 $k$次(過去の$k$個の点を使用)の場合には、次式のようになる。
 
 \begin{eqnarray*}
-y_{n+1} - y_{n} &=& \int_{t_{n}}^{t_{n+1}} f(t,y) dt\\
-y_{n+1} &=& y_{i} + h(\beta_{1}^{k} f_{i} + \beta_{2}^{k} f_{i+1} + ... + \beta_{k}^{k} f_{i-k+1})
+y_{n+1} - y_{n} &=& \int_{t_{n}}^{t_{n+1}} f(t,y) dt
 \end{eqnarray*}
 
-各$f$に重み$\beta_{i-j+1}^{k}$を書けて総和を取ることで精度が向上している。
-上式より2次のアダムスバッシュフォース法では、以下のとおりになる。
+ここで$f(t,y)$を近似した直線の方程式は次のようになる。
 
 \begin{eqnarray*}
-y_{n+1} = y_{i} + h(\frac{3}{2} f_{i} - \frac{1}{2} f_{i-1})
+f(t, y) \approx f(t_{n-1}, y_{n-1}) + \frac{f(t_{n}, y_{n}) - f(t_{n-1}, y_{n-1})}{h}(t_{n}-t_{n-1})
+\end{eqnarray*}
+
+近似した直線の方程式を積分し、$y_{n+1}$について求める。
+
+\begin{eqnarray*}
+y_{n+1} &=& y_{i} + \int_{t_{n}}^{t_{n+1}}\left(f(t_{n-1}, y_{n-1}) + \frac{f(t_{n}, y_{n}) - f(t_{n-1}, y_{n-1})}{h}(t_{n}-t_{n-1})\right)dt\\
+y_{n+1} &=& y_{i} + h\left(\frac{3}{2} f(x_{n}, y_{n}) - \frac{1}{2} f(x_{n-1}, y_{n-1})\right)
 \end{eqnarray*}
 
 
 \section{2次のアダムス・モルトン法(台形法)が2次の方法であることを示せ}
 
-アダムス・モルトン法は、$x_{i}$から$x_{i+1}$の$f$の値を$f_{i+1}, f_{i}, ... , f_{i-k+2}$までの$k$個の値を内挿して求める。
+アダムス・モルトン法の方程式は次のように定義されている。
 
 \begin{eqnarray*}
-y_{n+1} = y_{i} + h(\gamma ^{k}_{1} f_{i+1} + \gamma ^{k}2 f_{i} + ... + \gamma ^{k}_{k} f_{i-k+2})
+y_{n+1} = y_{i} + h(\frac{1}{2} f_{i+1} + \frac{1}{2} f_{i})
 \end{eqnarray*}
 
-よって2次の場合は、次式のようになる。
+次に$y_{n+1}$をテイラー展開していく。ここで$y_{n}' = f_{n}$であることから、以下のように変形できる。
+
+\begin{eqnarray*}
+y_{n+1} &=& y(x_{n} + h)\\
+ &=& y_{n} + h y_{n}' + \frac{1}{2} h^{2} y_{n}'' + \frac{1}{3!} h^{3} y_{n}''' + o(h^{4})\\
+ &=& y_{n} + h f_{n} + \frac{1}{2} h^{2} f_{n}' + \frac{1}{3!} h^{3} f_{n}'' + o(h^{4})
+\end{eqnarray*}
+
+2次の項で打ち切ると、次式のようになる。
 
 \begin{eqnarray*}
 y_{n+1} = y_{i} + h(\frac{1}{2} f_{i+1} + \frac{1}{2} f_{i})
@@ -192,7 +204,8 @@ Y_{j}^{1} = \frac{9}{8} ( 1-10 \Delta t)^{j} - \frac{1}{8} ( 1- 90\Delta t)^{j}
 y(t) = \frac{9}{8} exp(-10t) - \frac{1}{8} exp (-90t)
 \end{eqnarray*}
 
-tが大きくなると急速に0に近づく。差分解の項が0に近づくためには、$|1 - 10 \Delta t| < 1$かつ$|1 - 90 \Delta t| < 1$、つまり$\Delta t < \frac{1}{90}$に設定すれば、差分解は滑らかに減衰する。
-
+tが大きくなると急速に0に近づく。差分解の項が0に近づくためには、$|1 - 10 \Delta t| < 1$かつ$|1 - 90 \Delta t| < 1$でなければならない。
+従って$\Delta t < \frac{1}{45}$を満たす必要がある。
+$\Delta t < \frac{1}{45}$の時、差分解は滑らかに減衰する。
 
 \end{document}
