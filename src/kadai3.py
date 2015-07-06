@@ -1,12 +1,3 @@
-"""
-(dx, dt) = (1/6, 1/100), (1/10, 1/100), (1/10, 1/500)
-この値からN, M, Tを決定する。
-1: N=6, M=100, T=1
-2: N=10, M=100, T=1
-3: N=10, M=500, T=1
-"""
-
-
 def phi(x):
     """u(x, 0) = x (0<=x<=1/2), 1-x (1/2 < x <= 1)
     """
@@ -16,7 +7,6 @@ def phi(x):
         return 1-x
     else:
         return None
-
 
 def initial_u_array(N, dx):
     u_array = []
@@ -30,7 +20,6 @@ def calc_u_array(alpha, u, n, j):
     ans += alpha * u[n][j-1]
     return ans
 
-
 def main(dx, dt, N, M, T):
     alpha = dt/(dx*dx)
 
@@ -42,7 +31,6 @@ def main(dx, dt, N, M, T):
         u_array.append(u)
 
     return u_array
-
 
 if __name__ == '__main__':
     loop_variables = (
@@ -56,5 +44,4 @@ if __name__ == '__main__':
         u_array = main(dx, dt, n, m, t)
         for u in u_array:
             print(','.join(["{0:.5f}".format(x) for x in u]))
-
 
